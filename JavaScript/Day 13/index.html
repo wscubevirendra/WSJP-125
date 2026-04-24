@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            width: 800px;
+            height: 400px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin: 50px auto;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .item {
+            width: 33.33%;
+            height: 100%;
+            padding: 4px;
+            flex-shrink: 0;
+            transform: translateX(0);
+            transition: all 300ms linear;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-group {
+            width: 100%;
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            padding: 4px 10px;
+            color: brown;
+            font-weight: bold;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(170, 102, 102);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="item">
+            <img src="pexels-askar-abayev-5637759.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="pexels-isaiah-56332-833109.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="pexels-karola-g-4033622.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="pexels-karola-g-4033636.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="pexels-rdne-5737464.jpg" alt="">
+        </div>
+
+    </div>
+    <div class="btn-group">
+        <button onclick="prevSlide()"><i class="fa-solid fa-caret-left"></i></button>
+        <button onclick="nextSlide()"> <i class="fa-solid fa-caret-right"></i></button>
+    </div>
+
+    <script>
+        var items = document.querySelectorAll(".item");
+        var count = 0;
+        function nextSlide() {
+            count++
+            if (count > items.length - 1) {
+                count = 0
+            }
+            for (let img of items) {
+                img.style.transform = `translateX(-${count * 200}%)`;
+            }
+        }
+
+        function prevSlide() {
+            count--
+            if (count == 0) return
+            for (let img of items) {
+                img.style.transform = `translateX(-${count * 100}%)`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

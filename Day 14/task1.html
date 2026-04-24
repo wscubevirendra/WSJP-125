@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            background: #070721;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            width: 400px;
+            height: 300px;
+            /* border: 2px solid red; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .line {
+            width: 20px;
+            height: 200px;
+            animation: demo 4s infinite linear;
+
+        }
+
+        .line:nth-child(1) {
+            background-color: teal;
+            animation-duration: 1s;
+        }
+
+        .line:nth-child(2) {
+            background-color: yellow;
+            animation-duration: 2s;
+
+        }
+
+        .line:nth-child(3) {
+            background-color: salmon;
+            animation-duration: 4s;
+
+        }
+
+        .line:nth-child(4) {
+            background-color: sienna;
+            animation-duration: 2s;
+
+        }
+
+
+        @keyframes demo {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+
+    </div>
+
+
+</body>
+
+</html>

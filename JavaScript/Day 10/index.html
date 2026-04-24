@@ -1,0 +1,44 @@
+<script>
+    // function printName(name) {
+    //     console.log(`Hello, ${name}`)
+    // }
+
+    // printName("Yuvraj")
+    // printName("Neha")
+    // printName("Vijay")
+    // printName("Akshay")
+
+    // function reverseArray(array) {
+    //     var newArray = [];
+    //     for (var i = array.length - 1; i >= 0; i--) {
+    //         newArray.push(array[i])
+    //     }
+    //     console.log(newArray)
+
+    // }
+
+    // reverseArray([10, 20, 30, 40])
+    // reverseArray([1,2,3,2,32,3,2,3,2])
+    // reverseArray([10,20,30,40,50])
+
+
+    function findIndex(array, element) {
+        if (array.includes(element)) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] == element) {
+                    console.log(i)
+                    break
+                }
+            }
+        }else{
+            console.log("False")
+        }
+
+
+    }
+
+
+    findIndex([100, 200, 20, 30, 50, 85], 20)
+
+
+</script>

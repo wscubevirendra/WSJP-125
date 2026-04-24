@@ -1,0 +1,88 @@
+<script>
+    // const array = [10, 20, 30, 40, 100, 200];
+    // const [a, b, ...rest] = array;
+    // // console.log(rest)
+
+    // const obj = {
+    //     name: "Rohit",
+    //     age: 23,
+    //     address: "Jaipur"
+    // }
+    // //DeSctruring
+
+    // const { name, ...rest } = obj;
+    // console.log(rest)
+
+    // const array = [2, 3, 4, 5, 6];
+
+    // const newArray = array.forEach(
+    //     (data, index) => {
+    //         return data * 2
+    //     }
+    // );
+
+
+
+    // const newArray = array.map(
+    //     (data, index) => {
+    //         if (data % 2 == 0){
+    //             return data
+    //         }else{
+    //             return "Odd "
+    //         }
+    //     }
+    // );
+    // console.log(newArray)
+    //Filter Always Return  Condition is True
+    // const newArray = array.filter(
+    //     (data, index) => {
+    //         return data % 2 != 0
+    //     }
+    // )
+
+    // console.log(newArray)
+
+
+
+    // const user = users.find((data) => data.email == "manta@gmail.com");
+    // console.log(user);
+
+    // const array = [10, 20, 30, 40, 50];
+    // const sum = array.reduce((sum, curent) => sum + curent);
+    // console.log(sum)
+
+
+    // const array = [10, 20, 30, 40];
+    // const newArray = [...array, 60, 50];
+    // newArray[0] = 200;
+    // console.log(array,"Array");
+    // console.log(newArray,"NewArray")
+
+
+    // const user = {
+    //     name: "Manta",
+    //     age: 3,
+    //     email: "manta@gmail.com"
+    // }
+
+    // console.log({ city: "Jaipur", age: 100, ...user, })
+
+
+    const users = {
+        name: "Manta",
+        age: 3,
+        email: "manta@gmail.com",
+        address: {
+            city: "Jaipur",
+            contact: "98765"
+        }
+    };
+
+    shallowCopy.address.city = "Kota";
+
+    console.log(users)
+
+
+
+
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #ff7b00;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .days {
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button>12HR</button>
+        <h1>15:31:00</h1>
+       
+    </div>
+
+    <script>
+        var display = document.querySelector(".container h1");
+        var button = document.querySelector("button")
+        var flag = false;
+        const days = ["Sun", "Mon", "Tue", "wed", "Thu", "Fri", "Sat",]
+
+        function clock() {
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            if (h > 12 && flag == true) {
+                h = h - 12
+                h = h < 10 ? "0" + h : h;
+
+
+            }
+
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+            display.innerText = `${h}:${m}:${s}`;
+
+        }
+
+        button.addEventListener("click", function () {
+            flag = !flag;
+
+        })
+
+        setInterval(clock, 1000);
+
+
+    </script>
+
+</body>
+
+</html>

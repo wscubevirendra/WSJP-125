@@ -1,0 +1,13 @@
+.count {
+  padding: 10px;
+  margin: auto;
+  width: 200px;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+button{
+  cursor: pointer;
+}

@@ -1,0 +1,91 @@
+<script>
+    // var students = {
+    //     name: "Rohit",
+    //     email: "rohit@gmail.com",
+    //     age: 24,
+    //     father_name: "Mr Mohit Sharma ",
+    //     friends: ["Happy", "Mayank", "Vihaan"]
+    // }
+    // console.log(students.friends[0])
+
+    var students = [
+        {
+            name: "Rohit",
+            score: 87,
+            gender: "male"
+        },
+        {
+            name: "Mayank",
+            score: 77,
+            gender: "male"
+        },
+        {
+            name: "Yuvraj",
+            score: 40,
+            gender: "male"
+        },
+        {
+            name: "Anjali",
+            score: 91,
+            gender: "female"
+        },
+        {
+            name: "Priya",
+            score: 68,
+            gender: "female"
+        },
+        {
+            name: "Aman",
+            score: 74,
+            gender: "male"
+        },
+        {
+            name: "Sneha",
+            score: 82,
+            gender: "female"
+        },
+        {
+            name: "Karan",
+            score: 59,
+            gender: "male"
+        },
+        {
+            name: "Pooja",
+            score: 95,
+            gender: "female"
+        },
+        {
+            name: "Arjun",
+            score: 66,
+            gender: "male"
+        }
+    ];
+
+    var female_total_score = 0;
+    var male_total_score = 0;
+    var female = 0
+    var male = 0
+
+    for (let st of students) {
+        if (st.gender == "male") {
+            male_total_score += st.score
+            male++
+        } else {
+            female_total_score += st.score
+            female++
+        }
+    }
+    console.log(male,female)
+
+    console.log(female_total_score /female)
+    console.log(male_total_score / male)
+
+
+
+
+
+
+
+
+
+</script>

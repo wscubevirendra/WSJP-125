@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1000px;
+            height: 300px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 100px auto;
+            border: 2px solid green;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            height: 100px;
+            background-color: #7b7b7b;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .done {
+            background-color: #f7b;
+            font-size: 50px;
+            color: white;
+            transform: scale(0.7);
+            transition: 400ms;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div onclick="handler(this)" class="card">1</div>
+        <div onclick="handler(this)" class="card">2</div>
+        <div onclick="handler(this)" class="card">3</div>
+        <div onclick="handler(this)" class="card">4</div>
+        <div onclick="handler(this)" class="card">5</div>
+        <div onclick="handler(this)" class="card">6</div>
+
+    </div>
+
+    <script>
+        var cards = document.querySelectorAll(".card");
+        function handler(box) {
+
+            for (let card of cards) {
+                card.classList.remove("done")
+            }
+            box.classList.toggle("done")
+
+
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

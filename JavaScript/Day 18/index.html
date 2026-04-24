@@ -1,0 +1,15 @@
+<script>
+    const user = {
+        name: "Vihaan",
+        age: 4,
+        city: "Jaipur",
+        demo: function () {
+            setTimeout(
+                ()=>{
+                    console.log(this)
+                }
+            );
+        }
+    }
+    user.demo()
+</script>
