@@ -1,0 +1,13 @@
+.counter {
+  width: 300px;
+  padding: 10px;
+  background-color: #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
