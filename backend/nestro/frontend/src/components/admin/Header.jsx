@@ -23,7 +23,7 @@ export default function Header() {
 
             {/* Left Side */}
             <div>
-                <h1 className='text-2xl font-bold text-gray-800'>
+                <h1 className='text-md text-gray-800'>
                     Admin Dashboard
                 </h1>
                 <p className='text-sm text-gray-500'>

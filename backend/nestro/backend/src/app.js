@@ -8,8 +8,10 @@ import categoryRouter from './routers/category.router.js';
 import roomRouter from './routers/room.router.js';
 server.use(express.json());
 server.use(cors({ origin: "http://localhost:3000" }));
+// server.use(express.urlencoded({ extended: true }));
 server.use("/api/category", categoryRouter)
-server.use("/api/room-type", roomRouter)
+server.use("/api/room-type", roomRouter);
+
 
 
 connectDB()

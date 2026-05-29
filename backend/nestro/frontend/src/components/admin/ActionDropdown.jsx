@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 import {
   HiOutlineDotsHorizontal,
@@ -10,8 +11,9 @@ import {
   HiOutlinePencilAlt,
   HiOutlineTrash,
 } from "react-icons/hi";
+import DeleteBtn from "./DeleteBtn";
 
-export default function ActionDropdown() {
+export default function ActionDropdown({ id, module}) {
   const [open, setOpen] = useState(false);
 
   const dropdownRef = useRef(null);
@@ -56,35 +58,25 @@ export default function ActionDropdown() {
           : "invisible scale-95 opacity-0"
           }`}
       >
-        {/* VIEW */}
-        <button className="flex w-full items-center gap-3 px-4 py-3 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100">
-            <HiOutlineEye className="text-sm" />
-          </div>
 
-          View Details
-        </button>
 
         {/* EDIT */}
-        <button className="flex w-full items-center gap-3 px-4 py-3 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100">
-            <HiOutlinePencilAlt className="text-sm" />
-          </div>
+        <Link href={`/admin/category/edit/${id}`}>
+          <button className="flex w-full items-center gap-3 px-4 py-3 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100">
+              <HiOutlinePencilAlt className="text-sm" />
+            </div>
 
-          Edit Category
-        </button>
+            Edit
+          </button>
+        </Link>
+
 
         {/* DIVIDER */}
         <div className="mx-4 h-px bg-gray-100" />
 
         {/* DELETE */}
-        <button className="flex w-full items-center gap-3 px-4 py-3 text-xs font-medium text-red-500 transition-all hover:bg-red-50">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-100">
-            <HiOutlineTrash className="text-sm" />
-          </div>
-
-          Delete Category
-        </button>
+        <DeleteBtn path={`${module}/delete/${id}`} />
       </div>
     </div>
   );

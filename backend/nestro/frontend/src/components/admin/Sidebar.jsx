@@ -19,8 +19,18 @@ export default function Sidebar() {
             icon: <MdOutlineDashboard size={22} />
         },
         {
+            name: "Room Type",
+            path: "/admin/room-type",
+            icon: <TbCategoryFilled size={22} />
+        },
+        {
             name: "Category",
             path: "/admin/category",
+            icon: <TbCategoryFilled size={22} />
+        },
+        {
+            name: "Material",
+            path: "/admin/material",
             icon: <TbCategoryFilled size={22} />
         },
         {

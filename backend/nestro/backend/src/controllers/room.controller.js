@@ -17,6 +17,22 @@ const get = async (req, res) => {
 
 }
 
+const getById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const rooms = await RoomModel.findById(id)
+        return res.status(200).json({
+            success: true,
+            message: "Data find",
+            rooms: rooms
+        })
+
+    } catch (error) {
+        sendServerError(res, "Internal Server Error")
+    }
+
+}
+
 
 const create = async (req, res) => {
     try {
@@ -76,5 +92,6 @@ export {
     get,
     create,
     StatusUpdate,
-    deleteById
+    deleteById,
+    getById
 }
