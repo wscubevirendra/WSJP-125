@@ -15,11 +15,6 @@ const categorySchema = new mongoose.Schema({
         required: [true, "Category slug is required"]
 
     },
-    roomId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "rooms"
-
-    },
     image: {
         type: String
     },

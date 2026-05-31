@@ -10,7 +10,6 @@ const storage = new CloudinaryStorage({
 
     params: {
         folder: "categories",
-
         allowed_formats: ["jpg", "png", "jpeg", "webp"],
     },
 });

@@ -83,3 +83,46 @@ export const fetchCategoryById = async (id) => {
         }
     }
 }
+
+
+
+export const fetchProduct = async () => {
+    try {
+        const response = await client.get("product");
+
+        return {
+            success: response.data.success,
+            data: response.data.products,
+            message: response.data.message
+        }
+
+    } catch (error) {
+        return {
+            success: false,
+            data: [],
+            message: "Internal Server Error"
+        }
+
+    }
+}
+
+
+
+export const fetchProductById = async (id) => {
+    try {
+        const response = await client.get(`product/${id}`);
+
+        return {
+            success: response.data.success,
+            data: response.data.product,
+            message: response.data.message
+        }
+
+    } catch (error) {
+        return {
+            success: false,
+            data: [],
+            message: "Internal Server Error"
+        }
+    }
+}

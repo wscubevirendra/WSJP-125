@@ -3,7 +3,6 @@
 
 import { client, generateSlug } from "@/utils/helper";
 import { useEffect, useState } from "react";
-import Select from 'react-select'
 
 import {
     FiSave,
@@ -12,10 +11,9 @@ import {
 
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { fetchRooms } from "@/utils/api";
 
 export default function AddCategoryPage() {
-    const [rooms, setRooms] = useState([]);
+   
 
     const router = useRouter();
 
@@ -62,7 +60,6 @@ export default function AddCategoryPage() {
 
             sendData.append("name", formData.name);
             sendData.append("slug", formData.slug);
-            sendData.append("roomId", e.target.roomId.value);
             sendData.append("image", formData.image);
 
 
@@ -98,22 +95,6 @@ export default function AddCategoryPage() {
         }
     };
 
-    useEffect(
-        () => {
-            async function getRooms() {
-                const response = await fetchRooms();
-                if (response.success) {
-                    setRooms(response.data)
-                } else {
-                    setRooms([])
-                }
-
-            }
-
-            getRooms()
-        },
-        []
-    )
 
     return (
         <div className="min-h-screen mx-auto bg-[#f7f8fd] p-6">
@@ -187,18 +168,7 @@ export default function AddCategoryPage() {
                             URL friendly category identifier
                         </span>
                     </div>
-                    <div className="flex flex-col gap-1.5">
-
-                        <label className="text-xs font-semibold text-[#2a3460]">
-                            Room Id *
-                        </label>
-                        <Select name="roomId" options={
-                            rooms.map((data, index) => (
-                                { value: data._id, label: data.name }
-                            ))
-                        } />
-
-                    </div>
+              
 
                     {/* Image */}
                     <div className="flex flex-col gap-1.5">

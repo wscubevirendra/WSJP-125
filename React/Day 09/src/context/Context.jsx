@@ -13,10 +13,8 @@ export default function Context({ children }) {
             })
 
             setCart(products)
-
         } else {
             setCart([...cart, product])
-
         }
     }
 

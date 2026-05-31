@@ -1,17 +1,27 @@
+import ProductModel from "../models/product.model.js";
 import CategoryModel from "../models/category.model.js";
 import { sendBadRequest, sendConflict, sendCreated, sendNotFound, sendServerError, sendSuccess } from "../utils/response.js"
 
 const get = async (req, res) => {
     try {
-
-        const categories = await CategoryModel.find();
+        const products = await ProductModel.find().populate([
+            {
+                path: "roomId",
+                select: "_id name slug"
+            },
+            {
+                path: "categoryId",
+                select: "_id name slug"
+            }
+        ]);
         return res.status(200).json({
             success: true,
             message: "Data find",
-            categories
+            products
         })
 
     } catch (error) {
+        console.log(error)
         sendServerError(res, "Internal Server Error")
     }
 
@@ -20,11 +30,11 @@ const get = async (req, res) => {
 const getById = async (req, res) => {
     try {
         const { id } = req.params;
-        const category = await CategoryModel.findById(id)
+        const product = await ProductModel.findById(id)
         return res.status(200).json({
             success: true,
             message: "Data find",
-            category: category
+            product
         })
 
     } catch (error) {
@@ -34,26 +44,105 @@ const getById = async (req, res) => {
 }
 
 
+
 const create = async (req, res) => {
     try {
 
-        const { name, slug } = req.body;
+        const { roomId,
+            categoryId,
 
-        // Cloudinary Image URL
-        const image = req.file.path;
-        console.log(image, "IMAGE")
-        const category = await CategoryModel.findOne({ name });
-        if (category) return sendConflict(res);
-        await CategoryModel.create({ name, slug, image, image });
-        sendCreated(res);
+            name,
+            slug,
 
-    } catch (error) {
-        console.log(error, "error")
-        sendServerError(res, "Internal Server Error")
+            originalPrice,
+            salePrice,
+            discount,
+
+            shortDescription,
+            description,
+
+            material,
+
+            width,
+            height,
+            depth,
+
+            weight,
+
+            color,
+
+            seoTitle,
+            seoDescription
+        } = req.body;
+
+
+
+        // Image URL
+        const thumbnail = req.file?.path || "";
+
+        // Check Product Exists
+        const product = await ProductModel.findOne({
+            $or: [
+                { slug },
+                { name }
+            ]
+        });
+
+        if (product) {
+            return sendConflict(
+                res,
+                "Product already exists"
+            );
+        }
+
+        await ProductModel.create({
+            roomId,
+            categoryId,
+
+            name,
+            slug,
+
+            originalPrice,
+            salePrice,
+            discount,
+
+            shortDescription,
+            description,
+
+            material,
+
+            dimensions: {
+                width,
+                height,
+                depth
+            },
+
+            weight,
+
+            color,
+
+            seoTitle,
+            seoDescription,
+
+            thumbnail
+        });
+
+        sendCreated(
+            res,
+            "Product created successfully"
+        );
+
     }
+    catch (error) {
 
-}
+        console.log(error);
 
+        sendServerError(
+            res,
+            "Internal Server Error"
+        );
+    }
+};
 const update = async (req, res) => {
 
     try {
@@ -126,9 +215,6 @@ const update = async (req, res) => {
     }
 };
 
-//Wood
-
-
 
 const deleteById = async (req, res) => {
     try {
@@ -168,11 +254,39 @@ const StatusUpdate = async (req, res) => {
 
 }
 
+
+const StatusById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { flag } = req.body;
+        const product = await ProductModel.findById({ _id: id });
+        if (!product) return sendNotFound(res);
+
+
+        await ProductModel.findByIdAndUpdate(
+            { _id: id },
+            {
+                $set: {
+                    [flag]: !product[flag]
+                }
+            }
+        )
+
+        sendSuccess(res, "Status Update Sucessfully")
+
+    } catch (error) {
+        console.log(error)
+        sendServerError(res, "Internal Server Error")
+    }
+
+}
+
 export {
     get,
     create,
     StatusUpdate,
     deleteById,
     getById,
-    update
+    update,
+    StatusById
 }
